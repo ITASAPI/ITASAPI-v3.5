@@ -4328,6 +4328,58 @@ Global (system-wide) Market Data
 + Response 405 (application/json; charset=utf-8)
     + Attributes (405 Response)
 
+## Cotton Spot Records [/MarketData/{TradingEntityId}/Global/CottonSpot/{SpotType}/{Market}]
+`POST` Create Cotton Spot records in batch (Limited to 500 records per request). * <a href="/#introduction/disclaimer"> (Disclaimer)</a> 
+### Create Cotton Spot Records [POST]
+
+<b>Request Body</b>
+|Property|Description|Type|Max Length|Notes|Constraint|
+|--------|-----------|----|----------|-----|----------|
+|SpotRecords|Spot Records|`string`|20||Required|
+
+<hr />
+
+<b>Response Data</b>
+|Property|Description|Type|Max Length|Notes|Constraint|
+|--------|-----------|----|----------|-----|----------|
+|RecordIdRange|Record Id Range|`string`||||
+
++ Parameters
+    + TradingEntityId (required, string, `JT`) ... Identify specific trading entity. 
+    + SpotType (required, enum[string])  
+       + Members
+            + Class (required, string)
+            + Base (required, string) 
+            + Mike (required, string)
+            + Strength (required, string)
+            + Uniformity (required, string)
+            + ExtraneousMatter (required, string)
+    + Market (required, string, `South Delta`)
+
++ Request (application/json)
+    + Header
+
+            AccessToken: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1bmlxdWVfbmFtZSI6ImRlZXBhayIsInN1YiI6ImRlZXBhayIsInJvbGUiOlsiNzk5YjhhNDEtYWI0ZS00MTBhLWI5MTktYzU3ZWFlMmFlMDI5IiwiZGVlcGFrIiwiQVNQLk5FVCBJZGVudGl0eSIsIjViNDE4ODE2LTI3ZjQtNGRlOC1iNmMyLTJlZTcxNjI3ZmJmYyIsIkFkbWluIiwiU3VwZXJBZG1pbiJdLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMjciLCJhdWQiOiI4MjkzNjk0MjJmNzA0NTIzODUxZDk4NTU2YjZkNTQyYiIsImV4cCI6MTQ1OTQzMjk0MSwibmJmIjoxNDU5NDMxMTQxfQ.JgPGxt0Ok5baKx0YMXlO6D9kUYrCWM-Kma9b9iMW8tg
+
+    + Attributes ()
+
+
++ Response 201 (application/json; charset=utf-8)
+    + Attributes
+        + Data
+            + RecordRange: `500-1000` (string)
+        + Response (201 CreateResponse)
+        + Messages (array [201 ErrorBllMessageDetail])
+
++ Response 400 (application/json; charset=utf-8)
+    + Attributes (400 Response)
+
++ Response 404 (application/json; charset=utf-8)
+    + Attributes (404 Response)
+
++ Response 405 (application/json; charset=utf-8)
+    + Attributes (405 Response)
+
 
 # Group Inventory-Physicals-Order Scheduling
 Production Order scheduling services.
@@ -5197,6 +5249,27 @@ A multipurpose object used by several endpoints
 + Response 200 (application/json; charset=utf-8)
 + Attributes (ValuesInContractCcy)
 
+## Cotton Spot Record [/CotonSpot]
+A multipurpose object used by several endpoints
+### CottonSpotRecord [GET]
+
+|Property|Description|Type|Max Length|Notes|Constraint|
+|--------|-----------|----|----------|-----|----------|
+|SpotType|Spot Type|`string`|20||Required|
+|Market|Market|`string`|255||Required|
+|EffectiveDate|Effective Date|`datetime`|20||Required|
+|Grade|Grade|`string`||||
+|Leaf|Leaf|`string`||||
+|Staple|Staple|`string`||||
+|Mike|Mike|`string`||||
+|Strength|Strength|`string`||||
+|Uniformity|Uniformity|`string`||||
+|ExtraneousMatter|Extraneous Matter|`string`||||
+|PriceDifference|Price Difference|`number`||||
+
++ Response 200 (application/json; charset=utf-8)
++ Attributes (CottonSpot)
+
 ## DocumentDetails [/DocumentDetails]
 A multipurpose object used by several endpoints
 ### DocumentDetails[GET]
@@ -6038,6 +6111,19 @@ The CommodityFullCode is a five part key made up of the following values seperat
 + PnLCurrencies (array [ValuesInPnLCcy])
 + ContractCurrencies (array [ValuesInContractCcy])
 + FunctionalCurrencies (array [ValuesInFunctionalCcy])
+
+## CottonSpot (object)
++ SpotType: Class (required, string)
++ Market: Southeast (required, string)
++ EffectiveDate: `2025-09-30T00:00:00Z` (required, string)
++ Grade: `11 & 21` (string)
++ Leaf: 3 (string)
++ Staple: 34 (string)
++ Mike: `` (string)
++ Strength: `` (string)
++ Uniformity: `` (string)
++ ExtraneousMatter: `` (string)
++ PriceDifference: 175 (number)
 
 ## CounterpartyDetails (object)
 + AccountCode: TESTCLI.P (string)

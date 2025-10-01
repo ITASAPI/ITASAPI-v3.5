@@ -5258,14 +5258,14 @@ A multipurpose object used by several endpoints
 |SpotType|Spot Type|`string`|20||Required|
 |Market|Market|`string`|255||Required|
 |EffectiveDate|Effective Date|`datetime`|20||Required|
-|Grade|Grade|`string`||||
+|Color|Color|`string`||||
 |Leaf|Leaf|`string`||||
 |Staple|Staple|`string`||||
 |Mike|Mike|`string`||||
 |Strength|Strength|`string`||||
 |Uniformity|Uniformity|`string`||||
 |ExtraneousMatter|Extraneous Matter|`string`||||
-|PriceDifference|Price Difference|`number`||||
+|Difference|Difference|`number`||||
 
 + Response 200 (application/json; charset=utf-8)
 + Attributes (CottonSpot)
@@ -6116,27 +6116,27 @@ The CommodityFullCode is a five part key made up of the following values seperat
 + SpotType: Class (required, string)
 + Market: Southeast (required, string)
 + EffectiveDate: `2025-09-30T00:00:00Z` (required, string)
-+ Grade: `11 & 21` (string)
++ Color: `11 & 21` (string)
 + Leaf: 3 (string)
 + Staple: 34 (string)
 + Mike: `` (string)
 + Strength: `` (string)
 + Uniformity: `` (string)
 + ExtraneousMatter: `` (string)
-+ PriceDifference: 175 (number)
++ Difference: 175 (number)
 
 ## CottonSpot2 (object)
 + SpotType: Class (required, string)
 + Market: Southeast (required, string)
 + EffectiveDate: `2025-09-30T00:00:00Z` (required, string)
-+ Grade: `11 & 21` (string)
++ Color: `11 & 21` (string)
 + Leaf: 4 (string)
 + Staple: 34 (string)
 + Mike: `` (string)
 + Strength: `` (string)
 + Uniformity: `` (string)
 + ExtraneousMatter: `` (string)
-+ PriceDifference: 175 (number)
++ Difference: 175 (number)
 
 ## CottonSpotRecords (object)
 + SpotRecords (array [CottonSpot, CottonSpot2])

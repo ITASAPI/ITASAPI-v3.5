@@ -4328,7 +4328,7 @@ Global (system-wide) Market Data
 + Response 405 (application/json; charset=utf-8)
     + Attributes (405 Response)
 
-## Cotton Spot Records [/MarketData/{TradingEntityId}/Global/CottonSpot/{SpotType}/{Market}]
+## Cotton Spot Records [/MarketData/{TradingEntityId}/Global/CottonSpot/{SpotType}]
 `POST` Create Cotton Spot records in batch (Limited to 500 records per request). * <a href="/#introduction/disclaimer"> (Disclaimer)</a> 
 ### Create Cotton Spot Records [POST]
 
@@ -4354,7 +4354,6 @@ Global (system-wide) Market Data
             + Strength (required, string)
             + Uniformity (required, string)
             + ExtraneousMatter (required, string)
-    + Market (required, string, `Southeast`)
 
 + Request (application/json)
     + Header

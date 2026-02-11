@@ -4382,6 +4382,56 @@ Global (system-wide) Market Data
     + Attributes (405 Response)
 
 
+# Group Inventory-Deliveries
+Production Management services.
+
+## Quality Results Create [Inventory/{TradingEntityId}/Deliveries/QualityResults/{DeliveryNo}]
+`POST` Create Quality Results for Deliveries.
+### Create Quality Results [POST]
+
+<strong>Request Body</strong>
+
+|Property|Description|Type|Max Length|Notes|Constraint|
+|--------|-----------|----|----------|-----|----------|
+|DeliveryNo|Delivery Number|`number`|||Required|
+|AnalysisType|Analysis Type|`string`|10||Required `Supplier` or `Labaratory`|
+
+<hr />
+
+<b>Response Data</b>
+|Property|Description|Type|Max Length|Notes|Constraint|
+|--------|-----------|----|----------|-----|----------|
+|DeliveryNo|Delivery Number|`number`||||
+|AnalysisType|Analysis Type|`string`||||
+|ResultsRecordsCreated|No of Results Records Created|`number`||||
+
++ Parameters
+    + TradingEntityId (required, string, `JT`) ... Identify specific trading entity. 
+    + DeliveryNo (required, number, `200`) ... Identify specific delivery number. 
+
++ Request (application/json)
+    + Header
+
+            AccessToken: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1bmlxdWVfbmFtZSI6ImRlZXBhayIsInN1YiI6ImRlZXBhayIsInJvbGUiOlsiNzk5YjhhNDEtYWI0ZS00MTBhLWI5MTktYzU3ZWFlMmFlMDI5IiwiZGVlcGFrIiwiQVNQLk5FVCBJZGVudGl0eSIsIjViNDE4ODE2LTI3ZjQtNGRlOC1iNmMyLTJlZTcxNjI3ZmJmYyIsIkFkbWluIiwiU3VwZXJBZG1pbiJdLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMjciLCJhdWQiOiI4MjkzNjk0MjJmNzA0NTIzODUxZDk4NTU2YjZkNTQyYiIsImV4cCI6MTQ1OTQzMjk0MSwibmJmIjoxNDU5NDMxMTQxfQ.JgPGxt0Ok5baKx0YMXlO6D9kUYrCWM-Kma9b9iMW8tg
+
+    + Attributes (QualityResultsBody)
+
++ Response 201 (application/json; charset=utf-8)
+    + Attributes 
+        + Data (QualityResultsResponse)
+        + Response (201 CreateResponse)
+        + Messages (array [201 ErrorBllMessageDetail])
+
++ Response 400 (application/json; charset=utf-8)
+    + Attributes (400 Response)
+
++ Response 404 (application/json; charset=utf-8)
+    + Attributes (404 Response)
+
++ Response 405 (application/json; charset=utf-8)
+    + Attributes (405 Response)
+
+
 # Group Inventory-Physicals-Order Scheduling
 Production Order scheduling services.
 
@@ -5341,7 +5391,6 @@ A multipurpose object used by several endpoints
 + Response 200 (application/json; charset=utf-8)
 + Attributes (InterfaceType)
 
-
 ## OnAccountDetails [/OnAccountDetails]
 A multipurpose object used by several endpoints
 ### OnAccountDetails[GET]
@@ -5388,6 +5437,20 @@ A multipurpose object used by several endpoints
 
 + Response 200 (application/json; charset=utf-8)
 + Attributes (PrePaymentDetails)
+
+## Quality Result [/QualityResult]
+A multipurpose object used by several endpoints
+### QualityResult [GET]
+
+|Property|Description|Type|Max Length|Notes|Constraint|
+|--------|-----------|----|----------|-----|----------|
+|QualityCode|Quality Code|`string`|8||Required|
+|Qualifier|Qualifier|`string`|8||`<`, `<=`, `=`, `>`, `>=`, `Max`, `Min`, `Min/Max`, ` `|
+|Value|Value|`number`||||
+|UnitOfMeasure|Unit Of Measure|`string`|8|||
+
++ Response 200 (application/json; charset=utf-8)
++ Attributes (QualityResult)
 
 ## TradeCode [/TradeCode]
 A multipurpose object used by several endpoints
@@ -6823,6 +6886,28 @@ The CommodityFullCode is a five part key made up of the following values seperat
 ## PrePaymentDetails (object)
 + InstructionReference: XX123456 (string)
 + ContractReference: S01234.000 (string)
+
+## QualityResult (object)
++ QualityCode: CR (string)
++ Qualifier: Min (string)
++ Value: 95.5 (number)
++ UnitOfMeasure: % (string)
+
+## QualityResult2 (object)
++ QualityCode: C (string)
++ Qualifier: Max (string)
++ Value: 0.05 (number)
++ UnitOfMeasure: % (string)
+
+## QualityResultsBody (object)
++ DeliveryNo: 200 (number)
++ AnalysisType: Supplier (string)
++ QualityResults: (required, array[QualityResult, QualityResult2])
+
+## QualityResultsResponse (object)
++ DeliveryNo: 200 (number)
++ AnalysisType: Supplier (string)
++ ResultsRecordsCreated: 2 (number)
 
 ## ReceivableManual (object)
 + DocumentBody (required, DocumentDetails)

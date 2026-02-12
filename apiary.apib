@@ -4394,7 +4394,8 @@ Production Management services.
 |Property|Description|Type|Max Length|Notes|Constraint|
 |--------|-----------|----|----------|-----|----------|
 |DeliveryNo|Delivery Number|`number`|||Required|
-|AnalysisType|Analysis Type|`string`|10||Required `Supplier` or `Labaratory`|
+|AnalysisType|Analysis Type|`string`|10||Required `Supplier`, `Labaratory`, `Internal`|
+|CreateReporting|Create Reporting|`boolean`||||
 |QualityResults|see <b><a href="/#reference/data-object-definitions/quality-result">Quality Result</a></b> object|[array] of `object`|||Required|
 
 <hr />
@@ -6902,6 +6903,7 @@ The CommodityFullCode is a five part key made up of the following values seperat
 ## QualityResultsBody (object)
 + DeliveryNo: 200 (number)
 + AnalysisType: Supplier (string)
++ CreateReporting: true (boolean)
 + QualityResults: (required, array[QualityResult, QualityResult2])
 
 ## QualityResultsResponse (object)
